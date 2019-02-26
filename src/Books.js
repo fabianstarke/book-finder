@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar'
-import BookList from './BookSample'
+import BookList from './BookList'
 import 'antd/dist/antd.css';
 
 class Books extends Component {

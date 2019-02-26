@@ -1,12 +1,24 @@
 
+header {
+    padding: 30px 0px;
+    background: #343a40;
+    color: #fff;
+    text-align: center;
+}
+
+header h1 {
+  color: #fff;
+  font-weight: 800;
+}
+
 .App {
-  background-color: #282c34;
+  background-color: #ccc;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  padding-top: 100px;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -14,5 +26,21 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 50px;
+  justify-content: center;
+
+}
+
+.bookCard {
+  margin: auto;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  margin: 10px 0px;
+  width: 100px;
+  height: auto;
+  box-shadow: 0 10px 6px -6px #777 
 }
