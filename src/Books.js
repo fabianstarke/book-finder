@@ -4,23 +4,24 @@ import SearchBar from './SearchBar'
 import BookList from './BookList'
 import 'antd/dist/antd.css';
 
+const URL = 'https://www.googleapis.com/books/v1/volumes?'
+const key = 'AIzaSyAPeT8woXpS36DkQwVhD_nFzplQty1WZ7k'
+
 class Books extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			books: [],
-			searchField: ''
+			searchField: '',
 		}
 	}
 
-
 	searchBook = () => {
-		axios.get(`https://www.googleapis.com/books/v1/volumes?q={this.searchField}`)
+		axios.get(`${URL}q=${this.state.searchField}&key=${key}`)
 		 .then(res => {
 			 console.log(res)
-			 this.setState({ books: [...res.data.items]})
-		 	 console.log(this.state.books)
+			 this.setState({ books: [...res.data.items], searchField: ''})
 	})
 }
 	handleSearch = e => {
@@ -28,10 +29,12 @@ class Books extends Component {
 	}
 
 	render() {
+		const { books } = this.state;
 		return (
 			<Fragment>
 				<SearchBar handleSearch={this.handleSearch} onSearch={this.searchBook}/>
-				<BookList books={this.state.books}/>
+				<BookList books={books} />
+				
 			</Fragment>
 
 		);

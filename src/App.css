@@ -27,20 +27,36 @@ header h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 50px;
 
 }
 
+.ant-card.bookCard {
+  background-color: beige;
+}
 .bookCard {
-  margin: auto;
-  width: 400px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  width: 320px;
 }
-
 .thumbnail {
-  margin: 10px 0px;
-  width: 100px;
+  position: absolute;
+  top: -20px;
+  margin: 10px 10px 10px 10px;
+  max-width: 100px;
   height: auto;
   box-shadow: 0 10px 6px -6px #777 
+}
+.cardContent {
+  margin-left: 120px;
+}
+
+@media (max-width: 375px){
+  .bookCard {
+    width: 300px;
+  }
+  .thumbnail {
+    position: inherit
+  }
+  .cardContent {
+  margin-top: -160px;
+}
 }

@@ -1,39 +1,30 @@
 import React from 'react';
 import { Card, Button } from 'antd'
-import { bold } from 'ansi-colors';
-
-const { Meta } = Card;
 
 const BookCard = (props) => {
 	const { volumeInfo } = props.info;
-	const { title, authors } = props.info.volumeInfo;
-	const thumbNail = volumeInfo.hasOwnProperty('imageLinks') == false ? "https://vignette.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337" : volumeInfo.imageLinks.thumbnail;
-
+	const { title, authors, previewLink } = props.info.volumeInfo;
+	const thumbNail = volumeInfo.hasOwnProperty('imageLinks') === false ? "https://vignette.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337" : volumeInfo.imageLinks.thumbnail;
+	const publisher = volumeInfo.hasOwnProperty('publisher') === false ? 'Not known' : volumeInfo.publisher
+	const publishedDate = volumeInfo.hasOwnProperty('publishedDate') === false ? 'Not known' : volumeInfo.publishedDate
 	return (
 
 		<Card
 			className="bookCard"
-			style={{ margin: 10}}
-			cover={<img	className="thumbnail" alt={title} src={thumbNail} />}
+			style={{ margin: 20}}
+			cover={<img className="thumbnail" alt={title} src={thumbNail}/>}
 		>
-			<Meta
-				style={{
-					width: 200,
-					display: 'flex',
-					textAlign: 'justify',
-					flexDirection: 'column',
-					fontWeight: bold,
-					fontSize: 20
-				}}
-				title={title}
-				authors={authors}
-			/>
-			<Button
-				onClick={props.previewLink}
-				style={{ marginTop: 20, borderRadius: 5 }}
-				type="primary">See this Book
+			<div className="cardContent">
+				<p style={{ fontWeight: 'bold'}}>{title}</p>
+				<p style={{ fontWeight: 'bold' }}>By: {authors}</p>
+				<p style={{ fontWeight: 'light' }}>Published by: {publisher}</p>
+				<p style={{ fontWeight: 'light' }}>Date of publication: {publishedDate}</p>
+				<Button
+					style={{ marginTop: 20, borderRadius: 5 }}
+					type="primary"><a href={previewLink}>See this book</a>
 				</Button>
-
+			</div>
+			
 		</Card>
 
 
