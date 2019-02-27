@@ -1,4 +1,5 @@
 {
+  "homepage" : "http://fabianstarke.github.io/book-finder"
   "name": "book-finder",
   "version": "0.1.0",
   "private": true,
