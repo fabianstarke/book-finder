@@ -6,7 +6,7 @@ const BookCard = (props) => {
 	const { title, authors, previewLink } = props.info.volumeInfo;
 	const thumbNail = volumeInfo.hasOwnProperty('imageLinks') === false ? "https://vignette.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337" : volumeInfo.imageLinks.thumbnail;
 	const publisher = volumeInfo.hasOwnProperty('publisher') === false ? 'Not known' : volumeInfo.publisher
-	const publishedDate = volumeInfo.hasOwnProperty('publishedDate') === false ? 'Not known' : volumeInfo.publishedDate
+	const publishedDate = volumeInfo.hasOwnProperty('publishedDate') === false ? 'Not known' : volumeInfo.publishedDate.substring(0, 4);
 	return (
 
 		<Card

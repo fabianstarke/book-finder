@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import { Spin } from 'antd'
 import SearchBar from './SearchBar'
 import BookList from './BookList'
 import 'antd/dist/antd.css';
@@ -14,14 +15,16 @@ class Books extends Component {
 		this.state = {
 			books: [],
 			searchField: '',
+			loading: false
 		}
 	}
 
 	searchBook = () => {
+		this.setState({ loading: true})
 		axios.get(`${URL}q=${this.state.searchField}&key=${key}`)
 		 .then(res => {
 			 console.log(res)
-			 this.setState({ books: [...res.data.items], searchField: ''})
+			 this.setState({ books: [...res.data.items], loading: false})
 	})
 }
 	handleSearch = e => {
@@ -29,10 +32,11 @@ class Books extends Component {
 	}
 
 	render() {
-		const { books } = this.state;
+		const { books, loading } = this.state;
 		return (
 			<Fragment>
 				<SearchBar handleSearch={this.handleSearch} onSearch={this.searchBook}/>
+				{loading && <div className="spinner"><Spin size="large" /></div>}
 				<BookList books={books} />
 				
 			</Fragment>

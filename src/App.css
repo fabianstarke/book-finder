@@ -23,6 +23,9 @@ header h1 {
   color: white;
 }
 
+.spinner {
+  margin-top: 100px;
+}
 .list {
   display: flex;
   flex-wrap: wrap;
